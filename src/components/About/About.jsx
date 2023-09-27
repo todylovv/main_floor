@@ -6,7 +6,7 @@ import content_img from '../../assets/images/content_1.jpeg';
 
 const About = () => {
   return (
-    <div>
+    (
       <div className="container my-24 mx-auto md:px-6">
         <section className="mb-32">
           <div className="container mx-auto text-center lg:text-left xl:px-32">
@@ -19,9 +19,9 @@ const About = () => {
                   <h5 className="mb-12 text-lg font-bold text-primary dark:text-primary-400 lg:mb-10 xl:mb-12">
                     Чем мы занимаемся?
                   </h5>
-
+  
                   <p className="mb-4 font-bold">
-                  Создаем тепло и комфорт в каждом доме в городе Ростов-на-Дону!
+                    Создаем тепло и комфорт в каждом доме в городе Ростов-на-Дону!
                   </p>
                   <p className="mb-6 text-gray-500 dark:text-neutral-300">
                     Профессиональное утепление и шумоизоляция.
@@ -31,10 +31,9 @@ const About = () => {
                     Независимо от размеров и сложности проекта,
                     наша команда готова обеспечить высококачественное утепление ваших помещений.
                   </p>
-
                 </div>
               </div>
-
+  
               <div>
                 <img
                   src={content_img}
@@ -46,7 +45,6 @@ const About = () => {
           </div>
         </section>
       </div>
-    </div>
   );
 };
 
