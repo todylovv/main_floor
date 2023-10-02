@@ -1,0 +1,16 @@
+.background-radial-gradient {
+    background-color: white; /* Основной фон - белый */
+    background-image: radial-gradient(650px circle at 0% 0%,
+    hsl(6, 96%, 56%) 80%, /* Изменено значение */
+    hsl(6, 96%, 57%) 75%, /* Изменено значение */
+    hsl(6, 96%, 67%) 35%, /* Изменено значение */
+        hsl(6, 96%, 72%) 15%, /* Изменено значение */
+        transparent 100%),
+    radial-gradient(1250px circle at 100% 100%,
+    hsl(6, 96%, 56%) 80%, /* Изменено значение */
+    hsl(6, 96%, 57%) 75%, /* Изменено значение */
+    hsl(6, 96%, 67%) 35%, /* Изменено значение */
+    hsl(6, 96%, 82%) 15%, /* Изменено значение */
+        transparent 100%);
+    border-radius: 20px;
+}

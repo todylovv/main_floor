@@ -1,86 +1,45 @@
 import React from "react";
 import 'tailwindcss/tailwind.css';
-
+import Card from "./Card";
+import one from '../../assets/icons/one.svg';
+import two from '../../assets/icons/two.svg';
+import three from '../../assets/icons/three.svg';
+import tool_icon from '../../assets/icons/tool_icon.svg';
 
 const Service = () => {
+  const cardsData = [
+    {
+      title: "Утепление горизонтальных поверхностей",
+      imageSrc: one,
+      description: "Обеспечим теплоизоляцию как для открытых, так и для закрытых горизонтальных поверхностей, чтобы ваше пространство было защищено от холода и перепадов температур.",
+    },
+    {
+      title: "Утепление внутренних пространств",
+      imageSrc: two,
+      description: "Обеспечим оптимальную теплоизоляцию для пола, потолка и перекрытий, чтобы вы могли наслаждаться теплом и тишиной внутри помещений.",
+    },
+    {
+      title: "Утепление крыши и мансарды",
+      imageSrc: three,
+      description: "Обеспечим оптимальную теплоизоляцию для пола, потолка и перекрытий, чтобы вы могли наслаждаться теплом и тишиной внутри помещений.",
+    },
+    {
+      title: "Дополнительные услуги",
+      imageSrc: tool_icon,
+      description: "Обеспечим оптимальную теплоизоляцию для пола, потолка и перекрытий, чтобы вы могли наслаждаться теплом и тишиной внутри помещений.",
+    },
+  ];
+
   return (
-    <div>
-      <div className="grid-cols-1 sm:grid md:grid-cols-2 ">
-        <div className="mx-3 mt-6 flex flex-col self-start rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 sm:shrink-0 sm:grow sm:basis-0">
-          <a href="#!">
-            <img
-              className="rounded-t-lg"
-              src="https://tecdn.b-cdn.net/img/new/standard/city/041.webp"
-              alt="Hollywood Sign on The Hill"
-            />
-          </a>
-          <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-              Card title
-            </h5>
-            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-          </div>
-        </div>
-        <div className="mx-3 mt-6 flex flex-col self-start rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 sm:shrink-0 sm:grow sm:basis-0">
-          <a href="#!">
-            <img
-              className="rounded-t-lg"
-              src="https://tecdn.b-cdn.net/img/new/standard/city/042.webp"
-              alt="Palm Springs Road"
-            />
-          </a>
-          <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-              Card title
-            </h5>
-            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-          </div>
-        </div>
-        <div className="mx-3 mt-6 flex flex-col self-start rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 sm:shrink-0 sm:grow sm:basis-0">
-          <a href="#!">
-            <img
-              className="rounded-t-lg"
-              src="https://tecdn.b-cdn.net/img/new/standard/city/044.webp"
-              alt="Skyscrapers"
-            />
-          </a>
-          <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-              Card title
-            </h5>
-            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content.
-            </p>
-          </div>
-        </div>
-        <div className="mx-3 mt-6 flex flex-col self-start rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 sm:shrink-0 sm:grow sm:basis-0">
-          <a href="#!">
-            <img
-              className="rounded-t-lg"
-              src="https://tecdn.b-cdn.net/img/new/standard/city/043.webp"
-              alt="Los Angeles Skyscrapers"
-            />
-          </a>
-          <div className="p-6">
-            <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-              Card title
-            </h5>
-            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              This is a longer card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-          </div>
-        </div>
+    <div className="service">
+      <h1 className="text-3xl mb-4 text-red-600 flex items-center justify-center mt-10">
+  Наши услуги
+</h1>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {cardsData.map((card, index) => (
+          <Card key={index} {...card} />
+        ))}
       </div>
     </div>
   );

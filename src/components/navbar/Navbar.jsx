@@ -1,54 +1,115 @@
-import logo from '../../assets/logo.svg'; // Импортируем логотип
-import React, { useState } from 'react';
-import "tailwindcss/tailwind.css";
+import React, { useState, useEffect } from "react";
+import logo from '../../assets/logo.svg';
 
-
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar() {
+  const [showMenu, setShowMenu] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setShowMenu(!showMenu);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <nav id="header" className="fixed w-full z-30 top-0 text-white">
-      <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
-        <div className="pl-4 flex items-center">
-          <a className="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-            <img src={logo} alt="" />
-          </a>
-        </div>
-        <div className="block lg:hidden pr-4">
-          <button id="nav-toggle" className="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" onClick={toggleMenu}>
-            <svg className="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
-        </div>
-        <div className={`w-full flex-grow lg:flex lg:items-center lg:w-auto ${isMenuOpen ? 'block' : 'hidden'} mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20`} id="nav-content">
-          <ul className="list-reset lg:flex justify-end flex-1 items-center">
-            <li className="mr-3">
-              <a className="inline-block py-2 px-4 text-#fe390c font-bold no-underline" href="#">Главная</a>
-            </li>
-            <li className="mr-3">
-              <a className="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">О нас</a>
-            </li>
-            <li className="mr-3">
-              <a className="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Услуги</a>
-            </li>
-          </ul>
-          <button
-            id="navAction"
-            className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-          >
-            Связаться
-          </button>
+    <div className="dark:bg-gray-900">
+      <div className="container mx-auto relative">
+        <div className="md:mx-6">
+          <div className="flex items-center justify-between border-b border-orange-200 dark:border-gray-700 py-2 mt-0">
+            <div>
+              <div className="cursor-pointer" role="img" aria-label="luxe. Logo.">
+                <img className="h-14 pl-4 lg:h-auto" src={logo} alt="" />
+              </div>
+            </div>
+            <div className="md:hidden">
+              <button
+                className="text-orange-600 pr-4 dark:text-orange-300 text-base focus:outline-none"
+                onClick={toggleMenu}
+              >
+                {showMenu ? "✕" : "☰"} 
+              </button>
+              {showMenu && (
+                <div
+                  className="absolute mt-2 bg-white dark:bg-gray-900 border border-orange-200 dark:border-gray-700 shadow-md"
+                  style={{
+                    right: "0",
+                    minWidth: "200px",
+                  }}
+                >
+                  <ul className=" flex flex-col space-y-2 p-2">
+                    <li>
+                      <a href="javascript:void(0)" className=" dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                        Главная
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)" className="dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                        О нас
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)" className="dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                        Услуги
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)" className="dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                        Портфолио
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)" className="dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                        Связаться
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              )}
+            </div>
+            {windowWidth >= 768 && (
+              <div className="hidden md:block">
+                <ul className="flex items-center space-x-6">
+                  <li>
+                    <a href="javascript:void(0)" className="dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                      Главная
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)" className="dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                      О нас
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)" className="dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                      Услуги
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)" className="dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                      Портфолио
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)" className="dark:text-white dark:hover-text-orange-300 text-base text-right text-orange-600 focus:outline-none focus:underline hover:underline">
+                      Связаться
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
-    </nav>
+    </div>
   );
-};
-
-export default Navbar;
+}

@@ -1,118 +1,193 @@
-import React, { useEffect } from 'react';
-import {
-    Carousel,
-    initTE,
-  } from "tw-elements";
-  import "tailwindcss/tailwind.css";
+import React, { useState } from "react";
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from "pure-react-carousel";
+import "pure-react-carousel/dist/react-carousel.es.css";
+import content_1 from "../../assets/images/content_1.jpeg";
+import content_2 from "../../assets/images/content_2.jpeg";
+import content_3 from "../../assets/images/content_3.jpeg";
+import content_4 from "../../assets/images/header_1.jpg";
 
 
-const Portfolio = () => {
-    initTE({ Carousel });
-  return (
-    <div
-  id="carouselExampleIndicators"
-  className="relative"
-  data-te-carousel-init
-  data-te-ride="carousel">
-  <div
-    className="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
-    data-te-carousel-indicators>
-    <button
-      type="button"
-      data-te-target="#carouselExampleIndicators"
-      data-te-slide-to="0"
-      data-te-carousel-active
-      className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-      aria-current="true"
-      aria-label="Slide 1"></button>
-    <button
-      type="button"
-      data-te-target="#carouselExampleIndicators"
-      data-te-slide-to="1"
-      className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-      aria-label="Slide 2"></button>
-    <button
-      type="button"
-      data-te-target="#carouselExampleIndicators"
-      data-te-slide-to="2"
-      className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-      aria-label="Slide 3"></button>
-  </div>
+/* Install pure-react-carousel using -> npm i pure-react-carousel */
 
-  <div
-    className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-    <div
-      className="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item
-      data-te-carousel-active>
-      <img
-        src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
-        className="block w-full"
-        alt="Wild Landscape" />
+export default function Porftolio() {
+    return (
+        <div className="container mx-auto">
+            <h1 className="text-3xl mb-4 text-red-600 flex items-center justify-center mt-10">
+  Портфолио
+</h1>
+            <div className="flex items-center justify-center w-full h-full py-24 sm:py-8 px-4">
+                <CarouselProvider className="lg:block hidden" naturalSlideWidth={300} isIntrinsicHeight={true} totalSlides={5} visibleSlides={3} step={1} infinite={true}>
+                    <div className="w-full relative flex items-center justify-center">
+                        <ButtonBack role="button" aria-label="slide backward" className="absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                        <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1L1 7L7 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonBack>
+                        <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+                            <Slider>
+                                <div id="slider" className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
+                                    <Slide index={0}>
+    <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+        <img src={content_1} alt="black chair and white table" className="object-cover object-center w-full  h-64 h-64" />
     </div>
-    <div
-      className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item>
-      <img
-        src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
-        className="block w-full"
-        alt="Camera" />
-    </div>
-    <div
-      className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item>
-      <img
-        src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
-        className="block w-full"
-        alt="Exotic Fruits" />
-    </div>
-  </div>
+</Slide>
 
-  <button
-    className="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-    type="button"
-    data-te-target="#carouselExampleIndicators"
-    data-te-slide="prev">
-    <span className="inline-block h-8 w-8">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="h-6 w-6">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M15.75 19.5L8.25 12l7.5-7.5" />
-      </svg>
-    </span>
-    <span
-      className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
-  </button>
-  <button
-    className="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-    type="button"
-    data-te-target="#carouselExampleIndicators"
-    data-te-slide="next">
-    <span className="inline-block h-8 w-8">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="h-6 w-6">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-      </svg>
-    </span>
-    <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
-  </button>
-</div>
-  );
-};
+                                    <Slide index={1}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_2} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                        </div>
+                                    </Slide>
+                                    <Slide index={2}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_3} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                        </div>
+                                    </Slide>
+                                    <Slide index={3}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_4} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                        </div>
+                                    </Slide>
+                                    <Slide index={4}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_1} alt="black chair and white table" className="object-cover object-center w-full  h-64" />
+                                        </div>
+                                    </Slide>
+                                    <Slide index={5}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_2} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                        </div>
+                                    </Slide>
+                                </div>
+                            </Slider>
+                        </div>
+                        <ButtonNext role="button" aria-label="slide forward" className="absolute z-30 right-0 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L7 7L1 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonNext>
+                    </div>
+                </CarouselProvider>
 
-export default Portfolio;
+                {/* Carousel for tablet and medium size devices */}
+                <CarouselProvider className="lg:hidden md:block hidden" naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={6} visibleSlides={2} step={1} infinite={true}>
+                    <div className="w-full relative flex items-center justify-center">
+                        <ButtonBack role="button" aria-label="slide backward" className="absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1L1 7L7 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonBack>
+                        <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+                            <Slider>
+                                <div id="slider" className="h-full flex lg:gap-8 md:gap-6 gap-14 items-center justify-start transition ease-out duration-700">
+                                    <Slide index={0}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_1} alt="black chair and white table" className="object-cover object-center w-full  h-64" />
+                                        </div>
+                                    </Slide>
+                                    <Slide index={1}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_2} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                    <Slide index={2}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_3} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                    <Slide index={3}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_4} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                    <Slide index={4}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_1} alt="black chair and white table" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                    <Slide index={5}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_2} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                </div>
+                            </Slider>
+                        </div>
+                        <ButtonNext role="button" aria-label="slide forward" className="absolute z-30 right-0 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L7 7L1 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonNext>
+                    </div>
+                </CarouselProvider>
+
+                {/* Carousel for mobile and Small size Devices */}
+                <CarouselProvider className="block md:hidden " naturalSlideWidth={100} isIntrinsicHeight={true} totalSlides={3} visibleSlides={1} step={1} infinite={true}>
+                    <div className="w-full relative flex items-center justify-center">
+                        <ButtonBack role="button" aria-label="slide backward" className="absolute z-30 left-0 ml-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 cursor-pointer" id="prev">
+                            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1L1 7L7 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </ButtonBack>
+                        <div className="w-full h-full mx-auto overflow-x-hidden overflow-y-hidden">
+                            <Slider>
+                                <div id="slider" className="h-full w-full flex lg:gap-8 md:gap-6 items-center justify-start transition ease-out duration-700">
+                                    <Slide index={0}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_1} alt="black chair and white table" className="object-cover object-center w-full  h-64" />
+                                            <div className="bg-gray-800 bg-opacity-30 absolute w-full h-full p-6">
+                                                <h2 className="lg:text-xl leading-4 text-base lg:leading-5 text-white">Catalog 1</h2>
+                                                <div className="flex h-full items-end pb-6">
+                                                    <h3 className="text-xl lg:text-2xl font-semibold leading-5 lg:leading-6 text-white">Minimal Interior</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Slide>
+                                    <Slide index={1}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_2} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                    <Slide index={2}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_3} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                    <Slide index={3}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_4} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                    <Slide index={4}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_1} alt="black chair and white table" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                    <Slide index={5}>
+                                        <div className="flex flex-shrink-0 relative w-full sm:w-auto">
+                                            <img src={content_2} alt="sitting area" className="object-cover object-center w-full  h-64" />
+                                             
+                                        </div>
+                                    </Slide>
+                                </div>
+                            </Slider>
+                        </div>
+                        <ButtonNext role="button" aria-label="slide forward" className="absolute z-30 right-0 mr-8 focus:outline-none focus:bg-gray-400 focus:ring-2 focus:ring-offset-2 focus:ring-gray-400" id="next">
+            <svg width={8} height={14} viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L7 7L1 13" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+        </ButtonNext>
+                    </div>
+                </CarouselProvider>
+            </div>
+        </div>
+    );
+}
